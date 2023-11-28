@@ -10,12 +10,12 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function Sale(): HasMany
+    public function sale(): HasMany
     {
         return $this->hasMany(Sale::class);
     }
 
-    public function Estimate(): HasMany
+    public function estimate(): HasMany
     {
         return $this->hasMany(Estimate::class);
     }

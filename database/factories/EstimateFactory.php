@@ -17,10 +17,9 @@ class EstimateFactory extends Factory
      */
     public function definition()
     {
-        $result = ['◯', '×'];
         return [
             'estimated_date' => fake()->dateTimeBetween('+1 week', '+2 week'),
-            'result' => Arr::random($result),
+            'is_result' => fake()->boolean(50),
             'specification' => fake()->text(10),
             'content' => fake()->text(20),
             'quantity' => fake()->numberBetween(1, 10),

@@ -43,6 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function sale(): HasMany
+    {
+        return $this->hasMany(Sale::class);
+    }
+
     public function salePurchaser(): HasMany
     {
         return $this->hasMany(Sale::class, 'purchaser_id');
@@ -53,27 +58,22 @@ class User extends Authenticatable
         return $this->hasMany(Sale::class, 'seller_id');
     }
 
-    public function saleInputter(): HasMany
+    public function customer(): HasMany
     {
-        return $this->hasMany(Sale::class, 'inputter_id');
+        return $this->hasMany(Customer::class);
     }
 
-    public function CustomerPic(): HasMany
+    public function customerPic(): HasMany
     {
         return $this->hasMany(Customer::class, 'pic_id');
     }
 
-    public function CustomerInputter(): HasMany
+    public function estimate(): HasMany
     {
-        return $this->hasMany(Customer::class, 'Inputter_id');
+        return $this->hasMany(Estimate::class);
     }
 
-    public function EstimateInputter(): HasMany
-    {
-        return $this->hasMany(Estimate::class, 'inputter_id');
-    }
-
-    public function EstimatePic(): HasMany
+    public function estimatePic(): HasMany
     {
         return $this->hasMany(Estimate::class, 'pic_id');
     }

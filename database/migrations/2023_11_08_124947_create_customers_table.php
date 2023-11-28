@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Inputter_id')->commit('入力者ID');
-            $table->foreignId('pic_id')->commit('担当者ID');
+            $table->foreignId('user_id')->nullable()->commit('入力者ID');
+            $table->foreignId('pic_id')->nullable()->commit('担当者ID');
             $table->string('company')->commit('会社名');
             $table->string('name')->commit('顧客名');
             $table->string('address')->commit('住所');

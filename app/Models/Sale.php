@@ -16,17 +16,17 @@ class Sale extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function Estimate(): HasMany
+    public function estimate(): HasMany
     {
         return $this->hasMany(Estimate::class);
     }
 
-    public function Product(): BelongsTo
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function Customer(): BelongsTo
+    public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
     }

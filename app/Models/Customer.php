@@ -16,12 +16,12 @@ class Customer extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function Estimate(): HasMany
+    public function estimate(): HasMany
     {
         return $this->hasMany(Estimate::class);
     }
 
-    public function Sale(): HasMany
+    public function sale(): HasMany
     {
         return $this->hasMany(Sale::class);
     }

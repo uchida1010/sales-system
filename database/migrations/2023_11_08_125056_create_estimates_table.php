@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('estimates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('inputter_id')->comment('入力者ID');
-            $table->foreignId('customer_id')->comment('顧客ID');
-            $table->foreignId('product_id')->comment('商品ID');
-            $table->foreignId('region')->comment('地域ID');
-            $table->foreignId('pic_id')->comment('担当者ID');
+            $table->foreignId('user_id')->nullable()->comment('入力者ID');
+            $table->foreignId('customer_id')->nullable()->comment('顧客ID');
+            $table->foreignId('product_id')->nullable()->comment('商品ID');
+            $table->foreignId('region')->nullable()->comment('地域ID');
+            $table->foreignId('pic_id')->nullable()->comment('担当者ID');
             $table->date('estimated_date')->comment('見積日');
-            $table->boolean('result')->comment('結果');
+            $table->boolean('is_result')->comment('結果');
             $table->string('specification')->commit('仕様');
             $table->string('content')->commit('見積内容');
             $table->integer('quantity')->commit('数量');

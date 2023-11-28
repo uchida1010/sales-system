@@ -17,11 +17,9 @@ class SaleFactory extends Factory
      */
     public function definition()
     {
-            $payment = ["済", "未"];
-    
             return [
                 'payment_date' => fake()->dateTimeBetween('+1 week', '+2 week'),
-                'payment' => Arr::random($payment),
+                'is_payment' => fake()->boolean(50),
                 'transfer_date' => fake()->dateTimeBetween('+1 week', '+2 week'),
                 'purchase_price' => fake()->numberBetween(300, 1000),
                 'purchase_quantity' => fake()->numberBetween(1, 10),
