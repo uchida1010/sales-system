@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->nullable()->commit('顧客ID');
-            $table->foreignId('product_id')->nullable()->commit('商品ID');
-            $table->foreignId('estimate_id')->nullable()->commit('見積ID');
-            $table->foreignId('purchaser_id')->nullable()->commit('仕入担当者ID');
-            $table->foreignId('seller_id')->nullable()->commit('販売担当者ID');
-            $table->foreignId('user_id')->nullable()->commit('入力者ID');
+            $table->foreignId('customer_id')->nullable()->constrained('customers')->cascadeOnUpdate()->commit('顧客ID');
+            $table->foreignId('product_id')->nullable()->constrained('products')->cascadeOnUpdate()->commit('商品ID');
+            $table->foreignId('estimate_id')->nullable()->constrained('estimates')->cascadeOnUpdate()->commit('見積ID');
+            $table->foreignId('purchaser_id')->nullable()->constrained('users')->cascadeOnUpdate()->commit('仕入担当者ID');
+            $table->foreignId('seller_id')->nullable()->constrained('users')->cascadeOnUpdate()->commit('販売担当者ID');
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnUpdate()->commit('入力者ID');
             $table->date('payment_date')->nullable()->commit('支払日');
             $table->boolean('is_payment')->commit('入金の有無');
             $table->date('transfer_date')->commit('入金日');

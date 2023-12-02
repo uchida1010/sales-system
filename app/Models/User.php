@@ -63,9 +63,9 @@ class User extends Authenticatable
         return $this->hasMany(Customer::class);
     }
 
-    public function customerPic(): HasMany
+    public function customerPersonInCharge(): HasMany
     {
-        return $this->hasMany(Customer::class, 'pic_id');
+        return $this->hasMany(Customer::class, 'personinchearge_id');
     }
 
     public function estimate(): HasMany
@@ -73,8 +73,8 @@ class User extends Authenticatable
         return $this->hasMany(Estimate::class);
     }
 
-    public function estimatePic(): HasMany
+    public function estimatePersonInCharge(): HasMany
     {
-        return $this->hasMany(Estimate::class, 'pic_id');
+        return $this->hasMany(Estimate::class, 'personinchearge_id');
     }
 }

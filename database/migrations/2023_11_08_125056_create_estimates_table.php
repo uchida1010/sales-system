@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('estimates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->comment('入力者ID');
-            $table->foreignId('customer_id')->nullable()->comment('顧客ID');
-            $table->foreignId('product_id')->nullable()->comment('商品ID');
-            $table->foreignId('region')->nullable()->comment('地域ID');
-            $table->foreignId('pic_id')->nullable()->comment('担当者ID');
+            $table->foreignId('user_id')->nullable()->cascadeOnUpdate()->comment('入力者ID');
+            $table->foreignId('customer_id')->nullable()->cascadeOnUpdate()->comment('顧客ID');
+            $table->foreignId('product_id')->nullable()->cascadeOnUpdate()->comment('商品ID');
+            $table->foreignId('region')->nullable()->cascadeOnUpdate()->comment('地域ID');
+            $table->foreignId('personincharge_id')->nullable()->cascadeOnUpdate()->comment('担当者ID');
             $table->date('estimated_date')->comment('見積日');
             $table->boolean('is_result')->comment('結果');
             $table->string('specification')->commit('仕様');
