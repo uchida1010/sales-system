@@ -20,6 +20,9 @@ class CustomerFactory extends Factory
             'company' => fake()->company(),
             'name' => fake()->name(),
             'address' => fake()->address(),
+            'telephone' => fake()->phoneNumber(),
+            'cellphone' => fake()->phoneNumber(),
+            'email' => fake()->safeEmail(),
             'remarks' => '備考',
         ];
     }

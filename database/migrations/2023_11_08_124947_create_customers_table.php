@@ -17,10 +17,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->cascadeOnUpdate()->commit('入力者ID');
             $table->foreignId('personincharge_id')->nullable()->cascadeOnUpdate()->commit('担当者ID');
-            $table->string('company')->commit('会社名');
-            $table->string('name')->commit('顧客名');
-            $table->string('address')->commit('住所');
-            $table->string('remarks')->commit('備考');
+            $table->string('company')->commit('顧客名');
+            $table->string('name')->commit('担当者名');
+            $table->string('address')->nullable()->commit('住所');
+            $table->string('telephone')->nullable()->commit('電話番号');
+            $table->string('cellphone')->nullable()->commit('携帯番号');
+            $table->string('email')->nullable()->commit('メールアドレス');
+            $table->string('remarks')->nullable()->commit('備考');
             $table->timestamps();
         });
     }
