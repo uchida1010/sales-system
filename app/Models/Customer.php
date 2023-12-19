@@ -6,10 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 
 class Customer extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['company','name', 'address', 'telephone', 'cellphone', 'email', 'remarks'];
+
 
     public function user(): BelongsTo
     {
@@ -24,6 +32,23 @@ class Customer extends Model
     public function sale(): HasMany
     {
         return $this->hasMany(Sale::class);
+    }
+
+    public function createCustomer($validated)
+    {
+
+        $user = Auth::user();
+
+        try {
+            DB::beginTransaction();
+           Customer::create($validated);
+            DB::commit();
+            return true;
+        } catch (QueryException $e) {
+            Log::error("取引先マスタの登録に失敗しました。".$e->getMessage());
+            DB::rollBack();
+            return false;
+        }
     }
 
 }
