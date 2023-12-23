@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::prefix('sales-system')->group(function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+    Route::prefix('customer')->group(function () {
+    Route::get('/', [App\Http\Controllers\CustomerController::class, 'index']);
+    Route::get('create', [App\Http\Controllers\CustomerController::class, 'showcreate']);
+    Route::post('create', [App\Http\Controllers\CustomerController::class, 'executecreate']);
+    Route::post('create', [App\Http\Controllers\CustomerController::class, 'executecreate']);
+    Route::get('edit/{id}', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customer.edit');
+    Route::post('edit/{id}', [App\Http\Controllers\CustomerController::class, 'update'])->name('customer.update');
+    });
+});
