@@ -70,7 +70,7 @@ HOME|販売管理システム
                 <td>{{ $customer->name }}</td>
                 <td>{{ $customer->address }}</td>
                 <td>{{ $customer->remarks }}</td>
-                <td>B</td>
+                <td>{{ $customer->personincharge_id }}</td>
                 <td>{{ $customer->user->name}}</td>
                 </tr>
             @endforeach

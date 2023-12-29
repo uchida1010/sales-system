@@ -31,6 +31,7 @@ class CustomerRequest extends FormRequest
             'telephone' => 'nullable',
             'cellphone' => 'nullable',
             'remarks' => 'nullable|max:255',
+            'personincharge_id' => 'nullable',
           ];
     }
 
@@ -52,12 +53,13 @@ public function messages()
 public function attributes(): array
 {
     return [
-        'company' => '顧客名',
-        'name' => '担当者',
+        'company' => '会社名',
+        'name' => '顧客名',
         'address' => '住所',
         'telephone' => '電話番号',
         'cellphone' => '携帯番号',
-        'remarks' => '備考'
+        'remarks' => '備考',
+        'personincharge_id' => '担当者'
     ];
 }
 }

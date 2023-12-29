@@ -18,7 +18,7 @@ HOME|販売管理システム
                     <div class="row">
                         <div class="col">
                             <label class="form-label">
-                                <span class="label-txt">顧客名</span>
+                                <span class="label-txt">会社名</span>
                                 <span class="required-label">必須</span>
                             </label>
                             <input id="company" class="input-field" type="text" name="company" value="{{old('company')}}">
@@ -34,7 +34,7 @@ HOME|販売管理システム
                     <div class="row">
                         <div class="col">
                             <label class="form-label">
-                                <span class="label-txt">担当者</span>
+                                <span class="label-txt">顧客名</span>
                                 <span class="required-label">必須</span>
                             </label>
                             <input class="input-field" type="text" name="name" value="{{old('name')}}">
@@ -70,6 +70,19 @@ HOME|販売管理システム
                                 <span class="label-txt">E-mail</span>
                             </label>
                             <input class="input-field" type="email" name="email" value="{{old('email')}}" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">
+                                <span class="label-txt">担当者</span>
+                            </label>
+                            <select name="personincharge_id" class="input-field">
+                                <option value="" >選択してください</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}" @if("$user->name" == old('user->name')) selected @endif >{{ $user->name }}</option>
+                            @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="row">

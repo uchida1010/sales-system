@@ -23,6 +23,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">在庫表</a>
                 </li>
+                <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="btn-logout nav-link">
+                Logout
+                </button>
+                </form>
             </ul>
         </div>
     </div>

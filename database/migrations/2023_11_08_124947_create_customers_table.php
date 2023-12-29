@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->cascadeOnUpdate()->commit('入力者ID');
             $table->foreignId('personincharge_id')->nullable()->cascadeOnUpdate()->commit('担当者ID');
-            $table->string('company')->commit('顧客名');
-            $table->string('name')->commit('担当者名');
+            $table->string('company')->nullable()->commit('顧客名');
+            $table->string('name')->nullable()->commit('担当者名');
             $table->string('address')->nullable()->commit('住所');
             $table->string('telephone')->nullable()->commit('電話番号');
             $table->string('cellphone')->nullable()->commit('携帯番号');

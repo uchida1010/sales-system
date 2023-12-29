@@ -16,7 +16,7 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['company','name', 'address', 'telephone', 'cellphone', 'email', 'remarks'];
+    protected $fillable = ['company','name', 'address', 'telephone', 'cellphone', 'email', 'remarks', 'personincharge_id'];
 
 
     public function user(): BelongsTo

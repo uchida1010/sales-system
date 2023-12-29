@@ -6,6 +6,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Requests\CustomerRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class CustomerController extends Controller
 {
@@ -69,7 +70,11 @@ class CustomerController extends Controller
 
 public function showcreate() {
 
-    return view('customer.create');
+    $users = new User;
+
+    $users = $users->get();
+
+    return view('customer.create', compact('users'));
 
 }
 
