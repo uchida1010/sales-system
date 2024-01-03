@@ -62,7 +62,7 @@ HOME|販売管理システム
 
             </thead>
             <tbody>
-            @foreach ($customers as $customer)
+            @foreach ($customers->customer as $customer)
             <tr>
                 <td><a class="btn btn-primary" href="{{ route('customer.edit', $customer->id) }}">編集</a></td>
                 <td>{{ $customer->id }}</td>
@@ -70,16 +70,14 @@ HOME|販売管理システム
                 <td>{{ $customer->name }}</td>
                 <td>{{ $customer->address }}</td>
                 <td>{{ $customer->remarks }}</td>
-                <td>{{ $customer->personincharge_id }}</td>
-                <td>{{ $customer->user->name}}</td>
+                <td>{{ $customer->personincharge_id->name }}</td>
+                <td>{{ $customer->user->name }}</td>
                 </tr>
             @endforeach
             </tbody>
 
         </table>
     </div>
-    <div class="pagination-links">
-    {{$customers->appends(request()->query())->links()}}
-    </div>
+
 </div>
 @endsection

@@ -12,8 +12,6 @@ class CustomerController extends Controller
 {
  public function index(Request $request) {
 
-    $customers = Customer::paginate(10);
-
         $company = $request->input('company');
         $name = $request->input('name');
         $address = $request->input('address');
@@ -22,7 +20,7 @@ class CustomerController extends Controller
         $remarks = $request->input('remarks');
         $user = Auth::user();
 
-        $query = Customer::query();
+        $customers = Customer::query()->paginate(10);
 
         if (!empty($company)) {
             $query = $query->where('company', 'like', '%' . $company . '%');
@@ -54,7 +52,7 @@ class CustomerController extends Controller
                             ->orwhere('remarks', 'like', '%' . $remarks . '%');
         }
 
-        $customers = $query->paginate(10);
+        $customers = User::with('customerPersonInCharge')->get();
 
         $allcustomers = [
             'customers' => $customers,
@@ -62,7 +60,7 @@ class CustomerController extends Controller
             'name' => $name,
             'address' => $address,
             'phone' => $phone,
-            'remarks' => $remarks
+            'remarks' => $remarks,
         ];
 
         return view('customer.index')->with($allcustomers);
@@ -70,9 +68,7 @@ class CustomerController extends Controller
 
 public function showcreate() {
 
-    $users = new User;
-
-    $users = $users->get();
+    $users = User::all();
 
     return view('customer.create', compact('users'));
 

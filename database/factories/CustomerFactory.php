@@ -24,6 +24,7 @@ class CustomerFactory extends Factory
             'cellphone' => fake()->phoneNumber(),
             'email' => fake()->safeEmail(),
             'remarks' => '備考',
+            'personincharge_id' => fake()->numberBetween(1,5)
         ];
     }
 }

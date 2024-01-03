@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     public function customerPersonInCharge(): HasMany
     {
-        return $this->hasMany(Customer::class, 'personinchearge_id');
+        return $this->hasMany(Customer::class, 'personincharge_id');
     }
 
     public function estimate(): HasMany
@@ -75,6 +75,6 @@ class User extends Authenticatable
 
     public function estimatePersonInCharge(): HasMany
     {
-        return $this->hasMany(Estimate::class, 'personinchearge_id');
+        return $this->hasMany(Estimate::class, 'personincharge_id');
     }
 }
