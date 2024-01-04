@@ -52,7 +52,7 @@ class CustomerController extends Controller
                             ->orwhere('remarks', 'like', '%' . $remarks . '%');
         }
 
-        $customers = User::with('customerPersonInCharge')->get();
+        $customers = Customer::with('user')->get();
 
         $allcustomers = [
             'customers' => $customers,
@@ -68,7 +68,9 @@ class CustomerController extends Controller
 
 public function showcreate() {
 
-    $users = User::all();
+    $users = new User;
+
+    $users = $users->get();
 
     return view('customer.create', compact('users'));
 
