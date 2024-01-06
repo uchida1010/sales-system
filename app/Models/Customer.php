@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Customer extends Model
 {
@@ -25,9 +24,9 @@ class Customer extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function userId(): HasOne
+    public function personInCharge(): HasMany
     {
-        return $this->hasOne(User::class, 'personincharge_id');
+        return $this->HasMany(User::class, 'id', 'personincharge_id');
     }
 
     public function estimate(): HasMany
