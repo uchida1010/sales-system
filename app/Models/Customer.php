@@ -26,7 +26,7 @@ class Customer extends Model
 
     public function personInCharge(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id', 'personincharge_id');
+        return $this->belongsTo(User::class, 'personincharge_id');
     }
 
     public function estimate(): HasMany
