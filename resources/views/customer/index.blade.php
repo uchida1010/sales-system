@@ -78,6 +78,8 @@ HOME|販売管理システム
 
         </table>
     </div>
-
+    <div class="pagination-links">
+    {{$customers->appends(request()->query())->links()}}
+    </div>
 </div>
 @endsection
