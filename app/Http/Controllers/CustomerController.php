@@ -52,7 +52,7 @@ class CustomerController extends Controller
                             ->orwhere('remarks', 'like', '%' . $remarks . '%');
         }
 
-        $customers = Customer::with('user')->get();
+        $customers = Customer::with('personInCharge')->paginate(10);
 
         $allcustomers = [
             'customers' => $customers,
