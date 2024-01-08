@@ -95,6 +95,10 @@ public function edit($id)
 {   
     $customer = Customer::find($id);
 
-    return view('customer.edit', compact('customer'));
+    $users = new User;
+
+    $users = $users->get();
+
+    return view('customer.edit', compact('customer', 'users'));
 }
 }

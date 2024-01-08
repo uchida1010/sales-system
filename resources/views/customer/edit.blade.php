@@ -6,7 +6,7 @@ HOME|販売管理システム
 @section('content')
 <div class="main-container customer-container">
     <div class="page-title">
-        <h2>取引先マスタ--新規登録
+        <h2>取引先マスタ--編集画面
             <hr>
         </h2>
     </div>
@@ -62,6 +62,19 @@ HOME|販売管理システム
                                 <span class="label-txt">携帯番号</span>
                             </label>
                             <input class="input-field" type="tel" name="cellphone" value="{{old('cellphone', $customer->cellphone)}}" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">
+                                <span class="label-txt">担当者</span>
+                            </label>
+                            <select name="personincharge_id" class="input-field">
+                                <option value="" >選択してください</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}" @selected( old('personincharge_id', $customer->personincharge_id) == $user->id )>{{ $user->name }}</option>
+                            @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="row">
